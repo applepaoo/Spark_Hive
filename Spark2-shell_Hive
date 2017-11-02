@@ -30,6 +30,13 @@ val lines_split = lines.map(x => x.split(",")).map(x => Row.fromSeq(x))
 import org.apache.spark.sql.types._
 val schema = StructType(List(StructField("date", StringType, true),StructField("name", StringType, true),StructField("P", StringType, true)))
 
+import org.apache.spark.sql.SaveMode
 lazy val sqlContext = new org.apache.spark.sql.hive.HiveContext(sc)
-lines_split.foreachRDD(rdd =>{val DF = sqlContext.createDataFrame(rdd, schema)})
 
+lines_split.foreachRDD(rdd =>{val DF = sqlContext.createDataFrame(rdd, schema)
+DF.registerTempTable("sm")
+val DF_Write = sqlContext.sql("insert into table powerdata_minute select * from sm")
+DF_Write.write.mode(SaveMode.Append).saveAsTable("powerdata_minute")
+})
+ 
+//import org.apache.spark.sql.SaveMode
