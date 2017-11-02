@@ -5,3 +5,9 @@ val spark = SparkSession.builder().appName("Spark Hive Example").config("spark.s
 import spark.implicits._
 import spark.sql
 sql("select * from powerdata_minute").show()
+
+**************************************************************
+
+val lines_split = lines.map(x => x.split(",")).map(x => Row.fromSeq(x)
+val schema = StructType(List(StructField("date", StringType, true),StructField("name", StringType, true),StructField("P", StringType, true)))
+lines_split.foreachRDD(rdd =>{val DF = sqlContext.createDataFrame(rdd, schema)})
