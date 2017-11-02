@@ -1,0 +1,24 @@
+創建Hive表
+
+create external table PowerData_Minute(Date string, Name string, P double)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' 
+location 'hdfs://140.128.98.31:8020/user/hive/warehouse/powerdata_minute_external_table';
+
+//**
+創建外部表刪drop table會把原始路徑的檔案刪掉，不會把Create Table時location的資料刪除
+因為Load Data是移動非複製
+所以要保留資料的話，必須使用外部表(external)
+**//
+
+匯入資料到表上(已HDFS為例)
+
+//LOAD DATA INPATH 'hdfs://140.128.98.31:8020/user/hive/warehouse/powerdata_minute/*/*' INTO TABLE XXX(TABLE NAME);
+LOAD DATA INPATH 'hdfs://140.128.98.31:8020/user/hive/warehouse/powerdata_minute/*/*' INTO TABLE powerdata_minute;
+
+SELECT結果出來
+
+select * from powerdata_minute;
+
+依照時間排序
+
+select * from powerdata_minute sort by Date asc;
