@@ -39,4 +39,5 @@ val DF_Write = sqlContext.sql("insert into table powerdata_minute select * from 
 DF_Write.write.mode(SaveMode.Append).saveAsTable("powerdata_minute")
 })
  
-//import org.apache.spark.sql.SaveMode
+ssc.start()
+ssc.awaitTermination()
