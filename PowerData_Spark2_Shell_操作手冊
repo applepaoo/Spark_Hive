@@ -10,20 +10,13 @@ import org.apache.spark.streaming._
 import org.apache.spark.streaming.kafka._
 
 //val sc = new SparkConf().setAppName("SparkStreamingKakfaWordCount")
-
 val ssc = new StreamingContext(sc, Seconds(60))
-
 val topicMap = "TEST".split(":").map((_, 1)).toMap
-
 val zkQuorum = "140.128.98.31:2181";
-
 val group = "test-consumer-group"
-
 val lines = KafkaUtils.createStream(ssc, zkQuorum, group, topicMap).map(_._2)
-
 lines.print()
 lines.saveAsTextFiles("hdfs://140.128.98.31:8020/user/hive/warehouse/powerdata_minute/")
 
 ssc.start()
-
 ssc.awaitTermination()
