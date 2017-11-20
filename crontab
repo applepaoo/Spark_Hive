@@ -1,0 +1,1 @@
+*/1 * * * * java -cp "/opt/cloudera/parcels/KAFKA/lib/kafka/libs/*":. PowerData_producer
