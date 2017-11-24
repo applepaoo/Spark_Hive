@@ -1,7 +1,6 @@
 *****Kafka Concumer*****
 
-kafka-console-consumer --zookeeper master:2181 --topic TEST
-
+kafka-console-consumer --zookeeper master:2181 --topic powerdata_minute
 
 *****Spark_Streaming****
 
