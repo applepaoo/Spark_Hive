@@ -8,7 +8,7 @@ import org.apache.spark.sql.hive.HiveContext
 
 
 val ssc = new StreamingContext(sc, Seconds(60))
-val topicMap = "TEST".split(":").map((_, 1)).toMap
+val topicMap = "powerdata_minute".split(":").map((_, 1)).toMap
 val zkQuorum = "140.128.98.31:2181";
 val group = "test-consumer-group"
 val lines = KafkaUtils.createStream(ssc, zkQuorum, group, topicMap).map(_._2)
