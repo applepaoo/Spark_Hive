@@ -20,7 +20,7 @@ val sqlContext = new org.apache.spark.sql.hive.HiveContext(rdd.sparkContext)
 val smDF = sqlContext.createDataFrame( rdd, smStruct )
 smDF.registerTempTable("sm")
 val smTrgPart = sqlContext.sql("insert into table powerdata_minute select * from sm")
-smTrgPart.write.mode(SaveMode.Append).saveAsTable("powerdata_minute")
+//smTrgPart.write.mode(SaveMode.Append).saveAsTable("powerdata_minute")
 } )
 
 lines_split.print()
