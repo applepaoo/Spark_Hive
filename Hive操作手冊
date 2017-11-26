@@ -19,14 +19,14 @@ STORED AS PARQUET LOCATION 'hdfs://140.128.98.31:8020/user/hive/warehouse/powerd
 **//
 
 匯入資料到表上(已HDFS為例)
-
 //LOAD DATA INPATH 'hdfs://140.128.98.31:8020/user/hive/warehouse/powerdata_minute/*/*' INTO TABLE XXX(TABLE NAME);
 LOAD DATA INPATH 'hdfs://140.128.98.31:8020/user/hive/warehouse/powerdata_minute/*/*' INTO TABLE powerdata_minute;
 
 SELECT結果出來
-
 select * from powerdata_minute;
 
 依照時間排序
-
 select * from powerdata_minute sort by Date asc;
+
+選擇某電表依照時間排序
+select * from powerdata_minute where Name = "LIB-3" sort by Date asc;
