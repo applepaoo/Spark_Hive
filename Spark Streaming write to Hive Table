@@ -6,7 +6,6 @@ import org.apache.spark.sql.types.{StructType,StructField,StringType,IntegerType
 import org.apache.spark.sql.Row
 import org.apache.spark.sql.hive.HiveContext
 
-
 val ssc = new StreamingContext(sc, Seconds(60))
 val topicMap = "powerdata_minute".split(":").map((_, 1)).toMap
 val zkQuorum = "140.128.98.31:2181";
