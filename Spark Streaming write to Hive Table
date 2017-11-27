@@ -15,8 +15,8 @@ val lines = KafkaUtils.createStream(ssc, zkQuorum, group, topicMap).map(_._2)
 val lines_split = lines.map(x => x.split(",")).map( x => Row.fromSeq( x ) )
 val smStruct = StructType( (0 to 2).toList.map( x => x.toString).map( y => StructField( y , StringType, true ) ) )
 
+lazy val sqlContext = new org.apache.spark.sql.hive.HiveContext(sc)
 lines_split.foreachRDD( rdd => {
-val sqlContext = new org.apache.spark.sql.hive.HiveContext(rdd.sparkContext)
 val smDF = sqlContext.createDataFrame( rdd, smStruct )
 smDF.registerTempTable("sm")
 val smTrgPart = sqlContext.sql("insert into table powerdata_minute select * from sm")
