@@ -12,3 +12,6 @@ $ select * from powerdata_minute where Name = "LIB-3" order by Date asc;
 
 設定Memory
 $ set mem_limit=15gb;
+
+對PowerRecord做排序
+$ select `time`, `meter_id`, `v` from powerrecord where `meter_id` = "THUC-M0005-server-main" order by `time` limit 100;
