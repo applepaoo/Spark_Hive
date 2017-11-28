@@ -34,3 +34,6 @@ select * from powerdata_minute sort by Date asc;
 
 選擇某電表依照時間排序
 select * from powerdata_minute where Name = "LIB-3" sort by Date asc;
+
+對PowerRecord做資料排序
+$ select `time`, `meter_id`, `v` from powerrecord where `meter_id` = "THUC-M0005-server-main" sort by `time` limit 10000;
