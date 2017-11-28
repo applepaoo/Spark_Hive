@@ -6,3 +6,6 @@ $ INVALIDATE METADATA;
 
 列出Table
 $ show tables;
+
+列出資料並照時間排序
+$ select * from powerdata_minute where Name = "LIB-3" order by Date asc;
