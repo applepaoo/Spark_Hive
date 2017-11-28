@@ -1,0 +1,8 @@
+開啟Impala shell
+$ impala-shell
+
+同步Hive數據
+$ INVALIDATE METADATA;
+
+列出Table
+$ show tables;
