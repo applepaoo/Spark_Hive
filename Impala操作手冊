@@ -8,7 +8,7 @@ $ INVALIDATE METADATA;
 $ show tables;
 
 列出資料並照時間排序
-$ select * from powerdata_minute where Name = "LIB-3" order by Date asc;
+$ select * from powerdata_minute where `Name` = "LIB-3" order by `Date` asc;
 
 設定Memory
 $ set mem_limit=15gb;
