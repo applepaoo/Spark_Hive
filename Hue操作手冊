@@ -1,0 +1,11 @@
+Impala-對PowerData_minute排序
+$ select * from powerdata_minute where `Name` = "LIB-3" order by `Date` desc;
+
+Impala-搜尋PowerRecord
+$ select `time`, `meter_id`, `v` from powerrecord where `meter_id` = "THUC-M0005-server-main" limit 10000000
+
+Hive-對PowerData_minute排序
+$ select * from powerdata_minute where `Name` = "LIB-3" sort by `Date` desc;
+
+Hive-搜尋PowerRecord 
+$ select `time`, `meter_id`, `v` from powerrecord where `meter_id` = "THUC-M0005-server-main" limit 10000000
