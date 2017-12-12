@@ -4,6 +4,11 @@ create external table PowerData_Minute(Date string, Name string, P double)
 ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' 
 location 'hdfs://140.128.98.31:8020/user/hive/warehouse/powerdata_minute_external_table';
 
+create external table PowerData_Minute(time string, location string, KW double, totalKWH double, ch1_pf double, ch1_voltage double, ch1_current double, ch1_hz double, ch2_pf double, ch2_voltage double, ch2_current double, ch2_hz double, ch3_pf double, ch3_voltage double, ch3_current double, ch3_hz double, voltage12 double, voltage23 double, voltage31 double, ch1_THDi double, ch2_THDi double, ch3_THDi double, ch1_THDv double, ch2_THDv double, ch3_THDv double, total_pf double 
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' 
+location 'hdfs://140.128.98.31:8020/user/hive/warehouse/powerdata_minute_external_table';
+
 ***********************************************************************************************************
 專門For PAQRQUET
 create external table PowerData_Minute(Date string, Name string, P double)
