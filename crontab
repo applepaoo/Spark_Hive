@@ -1,1 +1,2 @@
 */1 * * * * java -cp "/opt/cloudera/parcels/KAFKA/lib/kafka/libs/*":. PowerData_producer
+*/1 * * * * java -cp "/opt/cloudera/parcels/KAFKA/lib/kafka/libs/*":. Producer_PowerData_Minute
