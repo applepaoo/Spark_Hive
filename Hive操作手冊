@@ -15,7 +15,7 @@ location 'hdfs://140.128.98.31:8020/user/hive/warehouse/powerdata_minute_externa
 
 create external table PowerData_CC(time string, Meter_ID string, v double, i double, pf double, p double)
 ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' 
-location 'hdfs://140.128.98.31:8020/user/hive/warehouse/powerdata_minute_external_table';
+location 'hdfs://140.128.98.31:8020/user/hive/warehouse/powerdata_cc_external_table';
 
 
 ***********************************************************************************************************
