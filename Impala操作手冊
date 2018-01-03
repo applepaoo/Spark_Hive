@@ -15,3 +15,6 @@ $ set mem_limit=15gb;
 
 對PowerRecord做排序
 $ select `time`, `meter_id`, `v` from powerrecord where `meter_id` = "THUC-M0005-server-main" order by `time` limit 100;
+
+對歷史資料powerminute的時間資料做清洗整理
+$ SELECT DISTINCT `date`, `hr`, `min`, concat(`date`, " ",  substr(cast((`hr`+100) as STRING), 2), ":", substr(cast((`min`+100) as STRING), 2), ":00"), `meter_id` FROM powerminute
