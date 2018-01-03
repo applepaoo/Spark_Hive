@@ -51,3 +51,6 @@ select * from powerdata_minute where Name = "LIB-3" sort by Date asc;
 
 對PowerRecord做資料排序
 $ select `time`, `meter_id`, `v` from powerrecord where `meter_id` = "THUC-M0005-server-main" sort by `time` limit 10000;
+
+對歷史資料powerminute的時間清洗並轉換成unixtimestamp(Impala unixtimestamp有問題)
+$ SELECT DISTINCT `date`, `hr`, `min`, unix_timestamp(concat(`date`, " ",  substr(cast((`hr`+100) as STRING), 2), ":", substr(cast((`min`+100) as STRING), 2), ":00")), `meter_id` FROM powerminute WHERE `meter_id` = "LIB-4" ORDER BY  unix_timestamp(concat(`date`, " ",  substr(cast((`hr`+100) as STRING), 2), ":", substr(cast((`min`+100) as STRING), 2), ":00"))
