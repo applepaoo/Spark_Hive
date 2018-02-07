@@ -11,5 +11,6 @@ $ kafka-topics --zookeeper master:2181 --list
 
 ### 開啟Consumer 接收Producer產生的訊息(PowerData_Minute, PowerData_CC)
 
-$ kafka-console-consumer --zookeeper master:2181 --topic PowerData_Minute --from-beginning
+$ kafka-console-consumer --zookeeper master:2181 --topic PowerData_Minute
+$ kafka-console-consumer --zookeeper master:2181 --topic PowerData_CC
 
