@@ -15,3 +15,6 @@ $ kafka-console-consumer --zookeeper master:2181 --topic PowerData_Minute
 
 $ kafka-console-consumer --zookeeper master:2181 --topic PowerData_CC
 
+### Superset啟動
+$ superset runserver -t 300
+
