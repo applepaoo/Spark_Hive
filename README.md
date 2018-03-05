@@ -13,6 +13,8 @@ $ kafka-topics --zookeeper master:2181 --list
 
 $ kafka-console-consumer --zookeeper master:2181 --topic PowerData_Minute
 
+$ kafka-console-consumer --zookeeper master:2181 --topic PowerData_Minute_HBase
+
 $ kafka-console-consumer --zookeeper master:2181 --topic PowerData_CC
 
 ### Superset啟動
