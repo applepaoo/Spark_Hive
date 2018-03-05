@@ -8,3 +8,8 @@
 * * * * * sleep 30; java -cp "/opt/cloudera/parcels/KAFKA/lib/kafka/libs/*":. Producer_PowerData_CC
 * * * * * sleep 40; java -cp "/opt/cloudera/parcels/KAFKA/lib/kafka/libs/*":. Producer_PowerData_CC
 * * * * * sleep 50; java -cp "/opt/cloudera/parcels/KAFKA/lib/kafka/libs/*":. Producer_PowerData_CC
+* * * * * sleep 10; java -cp "/opt/cloudera/parcels/KAFKA/lib/kafka/libs/*":. Producer_PowerData_CC_HBase
+* * * * * sleep 20; java -cp "/opt/cloudera/parcels/KAFKA/lib/kafka/libs/*":. Producer_PowerData_CC_HBase
+* * * * * sleep 30; java -cp "/opt/cloudera/parcels/KAFKA/lib/kafka/libs/*":. Producer_PowerData_CC_HBase
+* * * * * sleep 40; java -cp "/opt/cloudera/parcels/KAFKA/lib/kafka/libs/*":. Producer_PowerData_CC_HBase
+* * * * * sleep 50; java -cp "/opt/cloudera/parcels/KAFKA/lib/kafka/libs/*":. Producer_PowerData_CC_HBase
