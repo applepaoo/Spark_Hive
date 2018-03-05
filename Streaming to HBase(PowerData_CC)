@@ -1,0 +1,46 @@
+import org.apache.spark.streaming._
+import org.apache.spark.streaming.kafka._
+import org.apache.spark.sql.Row
+import org.apache.spark.sql._
+import org.apache.hadoop.hbase._
+import org.apache.hadoop.hbase.client._
+import org.apache.hadoop.hbase.HBaseConfiguration 
+import org.apache.hadoop.hbase.client.HTable 
+import org.apache.hadoop.hbase.TableName 
+import org.apache.hadoop.hbase.client.Put 
+import org.apache.hadoop.hbase.util._
+import scala.collection.JavaConversions._
+import org.apache.hadoop.hbase.io.ImmutableBytesWritable
+
+val ssc = new StreamingContext(sc, Seconds(10)) //建立Streaming Context 接口
+val topicMap = "PowerData_CC_HBase".split(":").map((_, 1)).toMap  //指定kafka topic name
+val zkQuorum = "140.128.98.31:2181"; //ZooKeeper 位置
+val group = "test-consumer-group"
+val lines = KafkaUtils.createStream(ssc, zkQuorum, group, topicMap).map(_._2) //接kafka串流，形成DStream (Spark Streaming專用格式)
+val lines_split = lines.map(x => x.split(",")).map(x => {(x(0), x(1), x(2), x(3), x(4), x(5))}) //時間, 電錶ID, V, i, pf, p
+
+lines_split.foreachRDD(rdd => {
+  rdd.foreachPartition(partitionRecords => {//循環分區
+
+    val conf = new HBaseConfiguration
+    conf.set("hbase.zookeeper.property.clientPort", "2181")
+    conf.set("hbase.zookeeper.quorum", "140.128.98.31")
+    val connection = ConnectionFactory.createConnection(conf); //獲取HBase連接,分區創建一個連接，分區不跨節點，不需要序列化
+    partitionRecords.foreach(s => {
+      val table = connection.getTable(TableName.valueOf("PowerData_CC")) //HBase TableName
+      val put = new Put(Bytes.toBytes(s._2.toString + "_" + s._1.toString))
+      put.addColumn(Bytes.toBytes("powerdata_cc"), Bytes.toBytes("time"), Bytes.toBytes(s._1.toString)) //時間
+      put.addColumn(Bytes.toBytes("powerdata_cc"), Bytes.toBytes("meter_id"), Bytes.toBytes(s._2.toString)) //電錶ID
+      put.addColumn(Bytes.toBytes("powerdata_cc"), Bytes.toBytes("v"), Bytes.toBytes(s._3.toString)) //v
+      put.addColumn(Bytes.toBytes("powerdata_cc"), Bytes.toBytes("i"), Bytes.toBytes(s._4.toString)) //ii
+      put.addColumn(Bytes.toBytes("powerdata_cc"), Bytes.toBytes("pf"), Bytes.toBytes(s._5.toString)) //pf
+      put.addColumn(Bytes.toBytes("powerdata_cc"), Bytes.toBytes("p"), Bytes.toBytes(s._6.toString)) //p
+      table.put(put)//將數據寫入HBase，若出錯關閉table
+      table.close()//分區數據寫入HBase后關閉連接
+      println(s._1 + ","+ s._2 + "寫入到HBase")
+    })
+  })
+})
+ssc.start()
+ssc.awaitTermination()
+
