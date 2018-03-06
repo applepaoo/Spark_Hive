@@ -21,8 +21,8 @@ val lines_split = lines.map(x => x.split(",")).map(x => {(x(0), x(1), x(2), x(3)
 
 lines_split.foreachRDD(rdd => {
   rdd.foreachPartition(partitionRecords => {//循環分區
-
-    val conf = new HBaseConfiguration
+    val conf = HBaseConfiguration.create();
+    //val conf = new HBaseConfiguration
     conf.set("hbase.zookeeper.property.clientPort", "2181")
     conf.set("hbase.zookeeper.quorum", "140.128.98.31")
     val connection = ConnectionFactory.createConnection(conf); //獲取HBase連接,分區創建一個連接，分區不跨節點，不需要序列化
