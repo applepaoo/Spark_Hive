@@ -28,7 +28,7 @@ lines_split.foreachRDD(rdd => {
     val connection = ConnectionFactory.createConnection(conf); //獲取HBase連接,分區創建一個連接，分區不跨節點，不需要序列化
     partitionRecords.foreach(s => {
       val table = connection.getTable(TableName.valueOf("PowerData_CC")) //HBase TableName
-      val put = new Put(Bytes.toBytes(s._2.toString + "_" + s._1.toString))
+      val put = new Put(Bytes.toBytes(s._2.toString + "_" + s._1.toString.substring(0, 18)+"0"))//ROW KEY舉例THUC-M0001-AC-main_2018-03-07 18:17:X0
       put.addColumn(Bytes.toBytes("powerdata_cc"), Bytes.toBytes("time"), Bytes.toBytes(s._1.toString)) //時間
       put.addColumn(Bytes.toBytes("powerdata_cc"), Bytes.toBytes("meter_id"), Bytes.toBytes(s._2.toString)) //電錶ID
       put.addColumn(Bytes.toBytes("powerdata_cc"), Bytes.toBytes("v"), Bytes.toBytes(s._3.toString)) //v
@@ -37,7 +37,7 @@ lines_split.foreachRDD(rdd => {
       put.addColumn(Bytes.toBytes("powerdata_cc"), Bytes.toBytes("p"), Bytes.toBytes(s._6.toString)) //p
       table.put(put)//將數據寫入HBase，若出錯關閉table
       table.close()//分區數據寫入HBase后關閉連接
-      println(s._1 + ","+ s._2 + "寫入到HBase")
+      println(s._1.toString + ","+ s._2 + "寫入HBase")
     })
   })
 })
