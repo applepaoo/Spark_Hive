@@ -29,3 +29,5 @@ $ kafka-console-consumer --zookeeper master:2181 --topic PowerData_CC_HBase
 ### Superset啟動
 $ superset runserver -t 300
 
+### HBase on Hue操作
+$ LIB-4_2018-03-07 13:30*+29[location][time][kw]
