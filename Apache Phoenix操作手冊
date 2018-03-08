@@ -1,0 +1,2 @@
+創建view on HBase(同步數據)(必須都為VARCHAR)
+$ create view "PowerData_Minute" (ROWKEY VARCHAR PRIMARY KEY, "powerdata_minute"."location" VARCHAR, "powerdata_minute"."time" VARCHAR, "powerdata_minute"."kw" VARCHAR, "powerdata_minute"."totalkwh" VARCHAR);
