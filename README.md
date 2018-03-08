@@ -36,3 +36,5 @@ $ THUC-M0001-AC-main_2018-03-07 18:17+16
 
 ### Apache Phoenix
 $ select "time", "location", "kw" from "PowerData_Minute" where "location" = 'LIB-4';
+
+$ select "time", "location", "kw" from "PowerData_Minute" where "location" = 'LIB-4' order by "time" DESC limit 10;
