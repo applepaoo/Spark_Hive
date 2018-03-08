@@ -35,6 +35,8 @@ $ LIB-4_2018-03-07 13:30*+29[location][time][kw]
 $ THUC-M0001-AC-main_2018-03-07 18:17+16
 
 ### Apache Phoenix
+$ phoenix-sqlline.py 140.128.101.177:2181
+
 $ select "time", "location", "kw" from "PowerData_Minute" where "location" = 'LIB-4';
 
 $ select "time", "location", "kw" from "PowerData_Minute" where "location" = 'LIB-4' order by "time" DESC limit 10;
