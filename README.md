@@ -29,7 +29,10 @@ $ kafka-console-consumer --zookeeper master:2181 --topic PowerData_CC_HBase
 ### Superset啟動
 $ superset runserver -t 300
 
-### HBase on Hue操作
+### Hue On HBase操作
 $ LIB-4_2018-03-07 13:30*+29[location][time][kw]
 
 $ THUC-M0001-AC-main_2018-03-07 18:17+16
+
+### Apache Phoenix
+$ select "time", "location", "kw" from "PowerData_Minute" where "location" = 'LIB-4';
