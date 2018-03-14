@@ -1,6 +1,11 @@
 創建表
-create 'powerdata_minute_hbase', 'powerdata_minute'
-create 'powerdata_minute_cc', 'powerdata_cc'
+$ create 'powerdata_minute_hbase', 'powerdata_minute'
+$ create 'powerdata_minute_cc', 'powerdata_cc'
 
 查看表
-list
+$ list
+
+刪除表
+$ disable 'powerdata_minute_cc'
+$ drop 'powerdata_minute_cc'
+
