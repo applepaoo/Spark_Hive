@@ -37,8 +37,8 @@ $ THUC-M0001-AC-main_2018-03-07 18:17+16
 ### Apache Phoenix
 $ phoenix-sqlline.py 140.128.101.177:2181
 
-$ select "time", "location", "kw" from "PowerData_Minute" where "location" = 'LIB-4';
+$ select "time", "location", "kw" from "powerdata_minute_hbase" where "location" = 'LIB-4';
 
-$ select "time", "location", "kw" from "PowerData_Minute" where "location" = 'LIB-4' order by "time" DESC limit 30;
+$ select "time", "location", "kw" from "powerdata_minute_hbase" where "location" = 'LIB-4' order by "time" DESC limit 30;
 
-$ select "time", "meter_id", "p" from "PowerData_CC" where "meter_id" = 'THUC-M0005-server-main' order by "time" desc limit 60;
+$ select "time", "meter_id", "p" from "powerdata_cc_hbase" where "meter_id" = 'THUC-M0005-server-main' order by "time" desc limit 60;
