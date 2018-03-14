@@ -27,7 +27,7 @@ lines_split.foreachRDD(rdd => {
     conf.set("hbase.zookeeper.quorum", "140.128.98.31")
     val connection = ConnectionFactory.createConnection(conf); //獲取HBase連接,分區創建一個連接，分區不跨節點，不需要序列化
     partitionRecords.foreach(s => {
-      val table = connection.getTable(TableName.valueOf("PowerData_Minute")) //HBase TableName
+      val table = connection.getTable(TableName.valueOf("powerdata_minute_hbase")) //HBase TableName
       val put = new Put(Bytes.toBytes(s._2.toString + "_" + s._1.toString.substring(0, 16))) //ROW KEY 只取2018-03-07 17:38(舉例用)
       put.addColumn(Bytes.toBytes("powerdata_minute"), Bytes.toBytes("time"), Bytes.toBytes(s._1.toString)) //時間
       put.addColumn(Bytes.toBytes("powerdata_minute"), Bytes.toBytes("location"), Bytes.toBytes(s._2.toString)) //地點
