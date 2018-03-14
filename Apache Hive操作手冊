@@ -18,9 +18,16 @@ ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
 location 'hdfs://140.128.98.31:8020/user/hive/warehouse/powerdata_cc_external_table';
 
 創建powerdata_minute_hbase(可連接HBase)
+
 create external table powerdata_minute_hbase(key string, location string, kw double, time string, totalkwh double)
 stored by 'org.apache.hadoop.hive.hbase.HBaseStorageHandler'	
 with serdeproperties ("hbase.columns.mapping" = "powerdata_minute:location, powerdata_minute:kw, powerdata_minute:time, powerdata_minute:totalkwh")
+
+創建powerdata_cc_hbase(可連接HBase)
+
+create external table powerdata_cc_hbase(key string, meter_id string, time string, p double, v double, i double, pf double)
+stored by 'org.apache.hadoop.hive.hbase.HBaseStorageHandler'	
+with serdeproperties ("hbase.columns.mapping" = "powerdata_cc:meter_id, powerdata_cc:time, powerdata_cc:p, powerdata_cc:v, powerdata_cc:i, powerdata_cc:pf ")
 
 ***********************************************************************************************************
 專門For PAQRQUET
