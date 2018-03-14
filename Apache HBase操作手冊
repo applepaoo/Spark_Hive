@@ -1,5 +1,6 @@
 創建表
 create 'powerdata_minute_hbase', 'powerdata_minute'
 create 'powerdata_minute_cc', 'powerdata_cc'
+
 查看表
 list
