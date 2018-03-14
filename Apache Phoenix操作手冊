@@ -1,6 +1,6 @@
 創建view on HBase(同步數據)(必須都為VARCHAR)
-$ create view "powerdata_minute" (ROWKEY VARCHAR PRIMARY KEY, "powerdata_minute"."location" VARCHAR, "powerdata_minute"."time" VARCHAR, "powerdata_minute"."kw" VARCHAR, "powerdata_minute"."totalkwh" VARCHAR);
-$ create view "powerdata_cc" (ROWKEY VARCHAR PRIMARY KEY, "powerdata_cc"."meter_id" VARCHAR, "powerdata_cc"."time" VARCHAR, "powerdata_cc"."v" VARCHAR, "powerdata_cc"."i" VARCHAR, "powerdata_cc"."p" VARCHAR, "powerdata_cc"."pf" VARCHAR);
+$ create view "powerdata_minute_hbase" (ROWKEY VARCHAR PRIMARY KEY, "powerdata_minute"."location" VARCHAR, "powerdata_minute"."time" VARCHAR, "powerdata_minute"."kw" VARCHAR, "powerdata_minute"."totalkwh" VARCHAR);
+$ create view "powerdata_cc_hbase" (ROWKEY VARCHAR PRIMARY KEY, "powerdata_cc"."meter_id" VARCHAR, "powerdata_cc"."time" VARCHAR, "powerdata_cc"."v" VARCHAR, "powerdata_cc"."i" VARCHAR, "powerdata_cc"."p" VARCHAR, "powerdata_cc"."pf" VARCHAR);
 
 刪除view
 $ drop view "PowerData_Minute"
