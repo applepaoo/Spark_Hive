@@ -2,6 +2,7 @@ Data Lake
 ============
 ### Spark2-Shell
 $ spark2-shell --driver-memory 25G --executor-memory 25G --executor-cores 20
+
 $ spark-shell --driver-memory 15G --executor-memory 15G --executor-cores 20
 
 ### Sqoop導入MySQL歷史資料到Hive
