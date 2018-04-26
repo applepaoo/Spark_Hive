@@ -44,3 +44,9 @@ $ select "time", "location", "kw" from "powerdata_minute_hbase" where "location"
 $ select "time", "location", "kw" from "powerdata_minute_hbase" where "location" = 'LIB-4' order by "time" DESC limit 30;
 
 $ select "time", "meter_id", "p" from "powerdata_cc_hbase" where "meter_id" = 'THUC-M0005-server-main' order by "time" desc limit 60;
+
+### 產生Java class
+$ javac -cp "/opt/cloudera/parcels/KAFKA/lib/kafka/libs/*" producer.java
+
+### 執行Java file
+$ java -cp "/opt/cloudera/parcels/KAFKA/lib/kafka/libs/*":. producer
