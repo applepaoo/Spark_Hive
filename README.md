@@ -50,3 +50,6 @@ $ javac -cp "/opt/cloudera/parcels/KAFKA/lib/kafka/libs/*" producer.java
 
 ### 執行Java file
 $ java -cp "/opt/cloudera/parcels/KAFKA/lib/kafka/libs/*":. producer
+
+###測試用
+$ spark-shell --jars target/spark-ts-examples-0.0.1-SNAPSHOT-jar-with-dependencies.jar \ --driver-class-path target/spark-ts-examples-0.0.1-SNAPSHOT-jar-with-dependencies.jar
